@@ -1,0 +1,13 @@
+# 临时文件与凭据
+*.tmp
+.gh_token.tmp
+*.log
+__pycache__/
+.DS_Store
+
+# skills 目录内是 4 个独立 git 仓库（第三方 skill 仓库），不纳入本仓库管理
+skills/
+
+# _extract_*.txt 是从开题报告文档中提取的中间文本，
+# 其中附件2含班级名单（他人姓名+学号）等敏感信息，不公开上传
+_extract_*.txt
