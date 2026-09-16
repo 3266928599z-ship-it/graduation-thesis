@@ -5,8 +5,8 @@ from docx import Document
 from docx.shared import Pt, Cm
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 
-SRC = "开题报告-重写版-基于三维点云配准的免示教焊接关键技术研究与系统实现.md"
-OUT = "开题报告-重写版-基于三维点云配准的免示教焊接关键技术研究与系统实现.docx"
+SRC = "开题报告-基于三维点云配准的免示教焊接关键技术研究与系统实现.md"
+OUT = "开题报告-基于三维点云配准的免示教焊接关键技术研究与系统实现.docx"
 
 doc = Document()
 sec = doc.sections[0]
@@ -127,6 +127,8 @@ def convert_inline_latex(s):
     # 先处理矩阵块（\begin{bmatrix} 等），避免与 $...$ 冲突
     s = re.sub(r'\\begin\{bmatrix\}([^\\]*)\\end\{bmatrix\}', lambda m: render_matrix(m.group(1).split('\\\\'), '&'), s)
     s = re.sub(r'\\begin\{pmatrix\}([^\\]*)\\end\{pmatrix\}', lambda m: render_matrix(m.group(1).split('\\\\'), '&'), s)
+    s = re.sub(r'\\\{', '{', s)
+    s = re.sub(r'\\\}', '}', s)
     s = re.sub(r'\$([^$]+)\$', repl, s)
     return s
 
